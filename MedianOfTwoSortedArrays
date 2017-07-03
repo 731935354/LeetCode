@@ -1,0 +1,37 @@
+/**
+ * Created by rongxin.zhu on 2017/6/30.
+ */
+public class MedianOfTwoSortedArrays {
+    public static double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        int nums[] = new int[nums1.length + nums2.length];
+        int i = 0, j = 0, k = 0; // 分别为nums1下标，nums2下标，nums下标
+        while(i < nums1.length || j < nums2.length) {
+            if(i < nums1.length && j < nums2.length) {
+                if(nums1[i] < nums2[j]) {
+                    nums[k++] = nums1[i++];
+                } else if(nums1[i] >= nums2[j]) {
+                    nums[k++] = nums2[j++];
+                }
+            }
+            if(i >= nums1.length) {
+                for(; j < nums2.length; j++)
+                    nums[k++] = nums2[j];
+            }
+            if(j >= nums2.length) {
+                for(; i < nums1.length; i++)
+                    nums[k++] = nums1[i];
+            }
+        }
+        if(k % 2 == 1) {
+            return (nums[(k-1)/2]);
+        } else {
+            return (nums[k/2] + nums[k/2-1])/2.0;
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] nums1 = {1, 2, 3, 4};
+        int[] nums2 = {2, 3, 5, 7, 8};
+        System.out.println(findMedianSortedArrays(nums1, nums2));
+    }
+}
