@@ -2,13 +2,11 @@
  * Created by rongxin.zhu on 2017/7/10.
  */
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class StringToInteger_atoi {
 
     public static int myAtoi(String str) {
         int idx = 0, result = 0, flag = 1;
+        // 空串
         if(str.length() < 1) return 0;
         // 去掉开头空格
         while(str.charAt(idx) == ' ' && idx < str.length()) { idx++; }
