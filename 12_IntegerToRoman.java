@@ -1,7 +1,7 @@
 class Solution {
     // 我自己写的版本，leetcode上某大神的版本往下翻。
     public static String intToRoman(int num) {
-        TreeMap<Integer, String> intToReverseRoman = new TreeMap<>();
+        HashMap<Integer, String> intToReverseRoman = new HashMap<>();
         intToReverseRoman = initMap(intToReverseRoman);
         int remainer = num; // 记录总体剩余部分
         int digit = 0; // 记录某一位的数字
@@ -23,7 +23,7 @@ class Solution {
     }
 
     // 用TreeMap竟然超时了，所以暴力HashMap
-    public static TreeMap<Integer, String> initMap(TreeMap<Integer, String> intToReverseRoman) {
+    public static HashMap<Integer, String> initMap(HashMap<Integer, String> intToReverseRoman) {
         intToReverseRoman.put(1, "I");
         intToReverseRoman.put(2, "II");
         intToReverseRoman.put(3, "III");
