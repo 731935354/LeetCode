@@ -1,4 +1,5 @@
 class Solution {
+    // 我自己写的版本，leetcode上某大神的版本往下翻。
     public static String intToRoman(int num) {
         TreeMap<Integer, String> intToReverseRoman = new TreeMap<>();
         intToReverseRoman = initMap(intToReverseRoman);
@@ -54,5 +55,24 @@ class Solution {
         intToReverseRoman.put(2000, "MM");
         intToReverseRoman.put(3000, "MMM");
         return intToReverseRoman;
+    }
+    // 大神版本
+    public static String intToRoman(int num) {
+        String[] romanPieces= {"","I","II","III","IV","V","VI","VII","VIII","IX", // 个位的map
+                                "","X","XX","XXX","XL","L","LX","LXX","LXXX","XC", // 十位的map
+                                "","C","CC","CCC","CD","D","DC","DCC","DCCC","CM", // 百位的map
+                                "","M","MM","MMM","MMMM"};                         // 千位的map
+        return romanPieces[num/1000+30] + // 千位 
+               romanPieces[(num/100)%10+20] + // 百位
+               romanPieces[(num/10)%10+10] + // 十位
+               romanPieces[num%10]; // 个位
+    }
+    // 另一位大神的版本
+    public static String intToRoman(int num) {
+        String M[] = {"", "M", "MM", "MMM"};
+        String C[] = {"", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"};
+        String X[] = {"", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"};
+        String I[] = {"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"};
+        return M[num/1000] + C[(num%1000)/100]+ X[(num%100)/10] + I[num%10];
     }
 }
