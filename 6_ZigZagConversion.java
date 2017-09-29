@@ -5,7 +5,7 @@
 /**
  *      a   e   i   m         a   e   i   m
  * 将   b d f h j l    转化为  b d f h j l     存入3个字符数组中
- *     c   g   k               c   g   k
+ *      c   g   k               c   g   k
  */
 public class ZigZagConversion {
     public static String convert(String s, int numRows) {
